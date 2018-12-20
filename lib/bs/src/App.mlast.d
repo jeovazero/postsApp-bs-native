@@ -1,1 +1,1 @@
-src/App.cmj :
+src/App.cmj : src/TitleBar.cmj
