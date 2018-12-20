@@ -1,1 +1,0 @@
-src/App.cmj : src/Post.cmj src/TitleBar.cmj
