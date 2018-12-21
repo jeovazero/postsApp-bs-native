@@ -1,7 +1,5 @@
 open BsReactNative;
 
-let component = ReasonReact.statelessComponent("Form");
-
 let styles = StyleSheet.create(
   Style.{
     "form": style([
@@ -57,9 +55,27 @@ let styles = StyleSheet.create(
   }
 );
 
-let make = (_children) => {
+type action =
+  | UpdateAuthor(string)
+  | UpdateText(string);
+
+type state = {
+  author: string,
+  text: string
+};
+
+let component = ReasonReact.reducerComponent("Form");
+
+let make = (~onPost, _children) => {
     ...component,
-    render: (_self) =>
+    initialState: () => { author: "", text: "" },
+    reducer: (action, state) =>{
+      switch(action){
+      | UpdateAuthor(author) => Update({...state, author })
+      | UpdateText(text) => Update({...state, text})
+      };
+    },
+    render: ({state, send}) =>
         <View style=styles##form>
           <View style=styles##box>
             <Text>{ReasonReact.string("TEXT TO POST")}</Text>
@@ -68,14 +84,18 @@ let make = (_children) => {
               style=styles##inputText
               multiline=true
               numberOfLines=3
+              value=state.text
+              onChangeText={ text => send(UpdateText(text)) }
               />
             <Text>{ReasonReact.string("BY")}</Text>
             <TextInput
               autoFocus=false
               style=styles##inputAuthor
               multiline=false
+              value=state.author
+              onChangeText={ author => send(UpdateAuthor(author)) }
               />
-            <PostButton onPress={() => ()}/>
+            <PostButton onPress={() => onPost()}/>
           </View>
         </View>
 }
