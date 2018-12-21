@@ -8,6 +8,7 @@ let makePost = (author, text) =>
 let postsContainer = Style.(style([
   display(Flex),
   alignItems(Center),
+  paddingBottom(Pt(40.)),
   zIndex(1)
 ]));
 
@@ -40,7 +41,7 @@ let make = _children => {
       ...{
            ({result}) =>
               (
-                <View style=postsContainer>{
+                <ScrollView contentContainerStyle=postsContainer>{
                   switch (result) {
                     | Loading => <Text> { "Loading" |> str }</Text>;
                     | Error(error) => <Text> {error##message |> str} </Text>;
@@ -63,7 +64,7 @@ let make = _children => {
                           })
                         )
                   }
-                }</View>
+                }</ScrollView>
               )
           
          }
