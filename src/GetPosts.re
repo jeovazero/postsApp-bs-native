@@ -7,7 +7,8 @@ let makePost = (author, text) =>
 
 let postsContainer = Style.(style([
   display(Flex),
-  alignItems(Center)
+  alignItems(Center),
+  zIndex(1)
 ]));
 
 let postStyle = Style.(style([
@@ -17,12 +18,12 @@ let postStyle = Style.(style([
 
 module GetPosts = [%graphql
   {|
-  query{
-      getPosts{
-        author
-        text
-        id
-      }
+  query getAllPosts{
+    getPosts{
+      author
+      text
+      id
+    }
   }
 |}
 ];

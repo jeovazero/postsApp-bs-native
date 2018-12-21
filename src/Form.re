@@ -75,7 +75,7 @@ let make = (~onPost, _children) => {
       | UpdateText(text) => Update({...state, text})
       };
     },
-    render: ({state, send}) =>
+    render: ({state:{author, text}, send}) =>
         <View style=styles##form>
           <View style=styles##box>
             <Text>{ReasonReact.string("TEXT TO POST")}</Text>
@@ -84,7 +84,7 @@ let make = (~onPost, _children) => {
               style=styles##inputText
               multiline=true
               numberOfLines=3
-              value=state.text
+              value=text
               onChangeText={ text => send(UpdateText(text)) }
               />
             <Text>{ReasonReact.string("BY")}</Text>
@@ -92,10 +92,10 @@ let make = (~onPost, _children) => {
               autoFocus=false
               style=styles##inputAuthor
               multiline=false
-              value=state.author
+              value=author
               onChangeText={ author => send(UpdateAuthor(author)) }
               />
-            <PostButton onPress={() => onPost()}/>
+            <AddPost author text onPost />
           </View>
         </View>
 }
