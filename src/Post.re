@@ -6,10 +6,14 @@ let styles = StyleSheet.create(
       width(Pct(90.0)),
       padding(Pt(20.)),
       backgroundColor(String("#ffffff")),
+      borderColor(String("rgba(175, 29, 188, 0.2)")),
       borderRadius(10.),
-      shadowColor(String("#ff6600")),
-      shadowOffset(~height=20. , ~width=20.),
-      shadowOpacity(80.)
+      borderBottomWidth(2.),
+      shadowRadius(10.),
+      shadowColor(String("#000000")),
+      shadowOffset(~height=1. , ~width=2.),
+      shadowOpacity(0.3),
+      elevation(1.)
     ]),
     "textPost": style([
       paddingTop(Pt(10.)),
@@ -38,7 +42,7 @@ let make = (~post as {author, text}, ~style, _children) => {
     render: (_self) => {
         <View style=Style.flatten([|styles##container, style|])>
           <View style=styles##textPost>
-            <Text style=styles##textAttr> (ReasonReact.string(text)) </Text>
+            <Text style=styles##textAttr> ( ReasonReact.string("\"" ++ text ++ "\"") ) </Text>
           </View>
           <View style=styles##author>
             <Text>

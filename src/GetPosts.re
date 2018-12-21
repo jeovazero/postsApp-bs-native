@@ -11,7 +11,8 @@ let postsContainer = Style.(style([
 ]));
 
 let postStyle = Style.(style([
-  marginBottom(Pt(10.))
+  marginBottom(Pt(10.)),
+  marginTop(Pt(10.))
 ]));
 
 module GetPosts = [%graphql
