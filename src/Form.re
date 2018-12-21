@@ -75,9 +75,7 @@ let make = (_children) => {
               style=styles##inputAuthor
               multiline=false
               />
-            <TouchableOpacity style=styles##submit>
-              <Text style=styles##submitTitle>{ReasonReact.string("post")}</Text>
-            </TouchableOpacity>
+            <PostButton onPress={() => ()}/>
           </View>
         </View>
 }
