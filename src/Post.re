@@ -21,7 +21,8 @@ let styles = StyleSheet.create(
     ]),
     "textAttr": style([
       color(String("rgb(175, 29, 188)")),
-      fontSize(Float(18.))
+      fontSize(Float(20.)),
+      fontFamily("Amaranth-Regular")
     ]),
     "author": style([
       display(Flex),
