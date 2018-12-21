@@ -2,6 +2,18 @@ open BsReactNative;
 open Belt.Option;
 let str = ReasonReact.string;
 
+let makePost = (author, text) =>
+  Post.{author, text};
+
+let postsContainer = Style.(style([
+  display(Flex),
+  alignItems(Center)
+]));
+
+let postStyle = Style.(style([
+  marginBottom(Pt(10.))
+]));
+
 module GetPosts = [%graphql
   {|
   query{
@@ -22,42 +34,36 @@ let unwrap = (value, default) => value -> mapWithDefault(default, i => i);
 let make = _children => {
   ...component,
   render: _ => {
-    <GetPostsQuery >
+    <GetPostsQuery>
       ...{
            ({result}) =>
-            <View>
               (
-                switch (result) {
-                  | Loading => <Text> { "Loading" |> str }</Text>;
-                  | Error(error) => <Text> {error##message |> str} </Text>;
-                  | Data(response) =>
-                    <View>
-                      (
-                        response##getPosts
-                        -> mapWithDefault( ReasonReact.null, posts => {
-                          (
-                            posts
-                            |> Array.mapi((index, post) => {
-                                <View key={ index |> string_of_int}>
-                                  {
-                                    post
-                                    -> mapWithDefault( ReasonReact.null, p => {
-                                      <View>
-                                          <Text>{ unwrap(p##author, "") |> str}</Text>
-                                          <Text>{ unwrap(p##text, "") |> str}</Text>
-                                          <Text>{ unwrap(p##id, "") |> str}</Text>
-                                      </View>
-                                    })
-                                  }
-                                </View>
-                            })
-                          ) |> ReasonReact.array;
-                        })
-                      )
-                    </View>
-                }
+                <View style=postsContainer>{
+                  switch (result) {
+                    | Loading => <Text> { "Loading" |> str }</Text>;
+                    | Error(error) => <Text> {error##message |> str} </Text>;
+                    | Data(response) =>
+                        (
+                          response##getPosts
+                          -> mapWithDefault( ReasonReact.null, posts => {
+                            (
+                              posts
+                              |> Array.mapi((index, post) => {
+                                  post
+                                  -> mapWithDefault( ReasonReact.null, p => {
+                                    <Post
+                                      key=unwrap(p##id, index |> string_of_int)
+                                      style=postStyle
+                                      post=makePost(unwrap(p##author, "anon"), unwrap(p##text, "")) />
+                                  })
+                              })
+                            ) |> ReasonReact.array;
+                          })
+                        )
+                  }
+                }</View>
               )
-            </View>
+          
          }
     </GetPostsQuery>;
   },
