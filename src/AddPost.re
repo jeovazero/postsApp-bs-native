@@ -25,13 +25,14 @@ module AddPostMutation = ReasonApollo.CreateMutation(AddPost);
 
 let component = ReasonReact.statelessComponent("AddPost");
 /**onPost(); */
-let make = (~onPost, ~author="anon", ~text, _children) => {
+let make = (~onPost, ~author, ~text, _children) => {
   ...component,
   render: _ =>
     <AddPostMutation>
       ...{
            (mutation, {result}) => {
-             let addNewPostQuery = AddPost.make(~author, ~text,());
+             let author' = String.length(author) > 0 ? author : "anon";
+             let addNewPostQuery = AddPost.make(~author=author', ~text,());
              <View>
                 <PostButton
                   onPress={ () =>
