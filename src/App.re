@@ -12,10 +12,12 @@ let createPostElement = (key, post) =>
   <Post key=string_of_int(key) post/>;
 
 let app = () =>
-  <View>
-    <TitleBar />
+  <ReasonApollo.Provider client=Client.instance>
     <View>
-      (ReasonReact.array(Array.mapi(createPostElement, posts)))
+      <TitleBar />
+      <View>
+        (ReasonReact.array(Array.mapi(createPostElement, posts)))
+      </View>
     </View>
-  </View>
-  
+    <GetPosts />
+  </ReasonApollo.Provider>

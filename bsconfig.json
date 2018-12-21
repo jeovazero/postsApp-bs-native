@@ -7,7 +7,14 @@
     "module": "commonjs"
   },
   "bsc-flags": ["-bs-super-errors"],
-  "bs-dependencies": ["bs-react-native", "reason-react"],
+  "bs-dependencies": [
+    "bs-react-native",
+    "reason-react",
+    "reason-apollo"
+  ],
+  "ppx-flags": [
+    "graphql_ppx/ppx"
+  ],
   "sources": [
     {
       "dir": "src",

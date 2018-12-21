@@ -13,10 +13,12 @@
     "bs-react-native": "0.10.0-rc.0",
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "reason-apollo": "^0.15.1",
     "reason-react": "^0.4.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "graphql_ppx": "^0.2.8",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.0",
     "react-test-renderer": "16.6.3"

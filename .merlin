@@ -1,4 +1,5 @@
 ####{BSB GENERATED: NO EDIT
+FLG -ppx /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/graphql_ppx/ppx
 FLG -ppx '/home/yornero/DEV/hiring-me/postsAppMobille/node_modules/bs-platform/lib/reactjs_jsx_ppx_2.exe'
 FLG -ppx /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/bs-platform/lib/bsppx.exe
 S /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/bs-platform/lib/ocaml
@@ -9,6 +10,8 @@ S /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/bs-react-native/lib/o
 B /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/bs-react-native/lib/ocaml
 S /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/reason-react/lib/ocaml
 B /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/reason-react/lib/ocaml
+S /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/reason-apollo/lib/ocaml
+B /home/yornero/DEV/hiring-me/postsAppMobille/node_modules/reason-apollo/lib/ocaml
 S src
 B lib/bs/src
 ####BSB GENERATED: NO EDIT}
