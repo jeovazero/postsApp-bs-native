@@ -6,11 +6,11 @@ A simple app to post anonymously or not a small text.
 > This is a React Native application developed in Reason.
 
 <p align="center">
-  <img src="https://cdn.pbrd.co/images/HSICmIa.jpg" width="280" />
+  <img src="screenshots/screenshot_01.png" width="280" />
 </p>
 
 <p align="center">
-  <img src="https://cdn.pbrd.co/images/HSICXH7.jpg" width="280" />
+  <img src="screenshots/screenshot_02" width="280" />
 </p>
 
 #### More info about the server coming soon!
@@ -28,11 +28,28 @@ A simple app to post anonymously or not a small text.
 
 ## Run
 
+In `src/Client.re` update the uri for used API
+
+```js
+...
+
+/* Create an HTTP Link */
+let httpLink =
+  ApolloLinks.createHttpLink(~uri=" http://192.168.0.103:3001/", ());
+
+...
+```
+
 1. `yarn watch`
 
 2. `react-native run-android`
 
 > Tested only on Android
+
+## License
+
+The source code is licensed under MIT.
+
 
 Made with :smirk:
 by <a href="https://github.com/jeovazero">@jeovazero</a>
