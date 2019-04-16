@@ -6,11 +6,11 @@ A simple app to post anonymously or not a small text.
 > This is a React Native application developed in Reason.
 
 <p align="center">
-  <img src="screenshots/screenshot_01.png" width="280" />
+  <img src="./screenshots/screenshot_01.jpg" width="280" />
 </p>
 
 <p align="center">
-  <img src="screenshots/screenshot_02" width="280" />
+  <img src="./screenshots/screenshot_02.jpg" width="280" />
 </p>
 
 #### More info about the server coming soon!
